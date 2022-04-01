@@ -32,7 +32,7 @@ Disponibilizamos neste repositório um banco de dados SQLite com alguns dados fa
 	-	created_at
 	-	updated_at
 
-*As seis primeiras e as duas últimas colunas da tabela users já estaram alimentadas.*
+*As seis primeiras e as duas últimas colunas da tabela users já estarão alimentadas.*
 
 -	**Channels**
 	-	Id
