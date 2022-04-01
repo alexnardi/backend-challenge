@@ -113,7 +113,7 @@ Caso o valor na coluna `points` de mabel seja menor que o valor `points` de joã
 Disponibilize o sistema em um **container Docker** de forma que possamos rodar o container em nossa máquina. 
 Por gentileza, crie um READ.me contendo todas as instruções para rodar o projeto. 
 
-O teste deve ser **versionado e disponibilizado no GitHub do candidado**.  
+O teste deve ser **versionado e disponibilizado no GitHub do candidato**.  
 Enviar o link para:  [mosggoficial@gmail.com](mailto:mosggoficial@gmail.com)
 
 Boa sorte a todos e  
