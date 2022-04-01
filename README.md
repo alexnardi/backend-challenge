@@ -114,7 +114,8 @@ Disponibilize o sistema em um **container Docker** de forma que possamos rodar o
 Por gentileza, crie um READ.me contendo todas as instruções para rodar o projeto. 
 
 O teste deve ser **versionado e disponibilizado no GitHub do candidato**.  
-Enviar o link para:  [mosggoficial@gmail.com](mailto:mosggoficial@gmail.com)
+Enviar o link para [mosggoficial@gmail.com](mailto:mosggoficial@gmail.com) até o dia **05/04/2022**.
+
 
 Boa sorte a todos e  
 Bom trabalho!!
