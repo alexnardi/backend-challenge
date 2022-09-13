@@ -1,0 +1,20 @@
+{
+  "name": "backend-challenge",
+  "version": "1.0.0",
+  "description": "teste pratico back-end MOS.gg",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexnardi/backend-challenge.git"
+  },
+  "author": "Alex Nardi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexnardi/backend-challenge/issues"
+  },
+  "homepage": "https://github.com/alexnardi/backend-challenge#readme"
+}
