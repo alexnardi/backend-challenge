@@ -15,6 +15,9 @@ usersRoutes.get('/signup' , async (req, res) => {
     });
   }
 
+  const twitch_id = Math.floor(Math.random() * 90000000) + 10000000;
+  console.log("🚀 ~ file: users.js ~ line 19 ~ usersRoutes.get ~ 10000000", 10000000)
+
   const user = await db.run(`INSERT INTO users(
     email,
     password,
@@ -26,11 +29,17 @@ usersRoutes.get('/signup' , async (req, res) => {
     "${password}",
     0,
     0,
-    ""
+    "${twitch_id}"
   )`);
   console.log("🚀 ~ file: users.js ~ line 18 ~ usersRoutes.get ~ user", user);
 
   res.status(200).json(user);
+});
+
+usersRoutes.get('/login' , async (req, res) => {
+  const db = await Database();
+
+res.status(200).json(user);
 });
 
 module.exports = {usersRoutes};
