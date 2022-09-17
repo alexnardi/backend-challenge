@@ -125,18 +125,34 @@ Bom trabalho!!
 ## resposta do Teste Prático Back-end MOS.gg
 
 ### passos criados
+
 - endpoint /signup
 - endpoint /login
 - integração com a API da Twitch
 - banco de dados disponibilizado salvo
 - endpoint /streamers
+- ordenação da queue(working in progress..)
 
 ### instruções para rodar o app: 
-Passo 1: tenha instalado:
-- docker: https://docs.docker.com/engine/install/
-- docker-compose: https://docs.docker.com/compose/install/ 
-			rode o comando:
-3- $docker-compose up 
-			ou
-1- $docker run -p 3000:3000 -d 
-2- $docker build -t alexnardi/backend-challenge.
+
+Passo 1: 
+
+- tenha instalado:
+docker: https://docs.docker.com/engine/install/
+docker-compose: https://docs.docker.com/compose/install/ 
+		
+Passo 2: 
+
+- baixar o arquivo backendchallenge.tar
+- rode o comando(substituir o caminho do arquivo):
+
+$ docker load < /tmp/backendchallenge.tar
+
+		ou rode o comando:
+
+$docker-compose up 
+
+-caso não dê certo, rode o comando:
+
+$docker run -p 3000:3000 -d 
+$docker build -t alexnardi/backend-challenge.

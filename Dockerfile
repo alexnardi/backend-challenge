@@ -1,5 +1,4 @@
 FROM node:alpine 
-# v16.17.0 (LTS)
 
 WORKDIR /usr/src/app
 
