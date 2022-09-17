@@ -1,45 +1,95 @@
-const {Router} = require('express');
-const Database = require('../database/config');
+const { Router } = require("express");
+const { hash, compare } = require("bcryptjs");
+const { sign } = require("jsonwebtoken");
+
+const AppError = require("../errors/AppError");
+const Database = require("../database/config");
+const authConfig = require("../config/auth");
 
 const usersRoutes = Router();
 
-usersRoutes.get('/signup' , async (req, res) => {
+usersRoutes.post("/signup", async (req, res) => {
   const db = await Database();
-  
+
   const { email, password } = req.body;
-  console.log("🚀 ~ file: users.js ~ line 10 ~ usersRoutes.get ~ email", email, password)
 
   if (!email || !password) {
-    res.status(400).json({
-      error: 'You must give an email and a password.'
-    });
+    throw new AppError("You must give an email and a password.");
+  }
+
+  const findUser = await db.get(`SELECT * FROM users WHERE email = $email`, {
+    $email: email,
+  });
+
+  if (findUser) {
+    throw new AppError("User already exists.");
   }
 
   const twitch_id = Math.floor(Math.random() * 90000000) + 10000000;
-  console.log("🚀 ~ file: users.js ~ line 19 ~ usersRoutes.get ~ 10000000", 10000000)
+  const hashedPassword = await hash(password, 8);
 
-  const user = await db.run(`INSERT INTO users(
+  await db.run(
+    `INSERT INTO users(
     email,
     password,
     experience,
     points,
     twitch_id
   )VALUES(
-    "${email}",
-    "${password}",
+    $email,
+    $password,
     0,
     0,
-    "${twitch_id}"
-  )`);
-  console.log("🚀 ~ file: users.js ~ line 18 ~ usersRoutes.get ~ user", user);
+    $twitch_id
+  )`,
+    {
+      $email: email,
+      $password: hashedPassword,
+      $twitch_id: twitch_id,
+    }
+  );
 
-  res.status(200).json(user);
+  db.close();
+
+  res.status(200).json({
+    email,
+    twitch_id,
+  });
 });
 
-usersRoutes.get('/login' , async (req, res) => {
+usersRoutes.post("/login", async (req, res) => {
   const db = await Database();
+  const { email, password } = req.body;
 
-res.status(200).json(user);
+  const findUser = await db.get(`SELECT * FROM users WHERE email = $email`, {
+    $email: email,
+  });
+
+  if (!findUser) {
+    throw new AppError("Incorrect email/password!", 401);
+  }
+
+  const passwordMatched = await compare(password, findUser.password);
+
+  if (!passwordMatched) {
+    throw new AppError("Incorrect email/password!", 401);
+  }
+
+  const { expiresIn, secret } = authConfig.jwt;
+
+  const token = sign({}, secret, {
+    subject: String(findUser.id),
+    expiresIn,
+  });
+
+  delete findUser.password;
+
+  db.close();
+
+  res.status(200).json({
+    user: findUser,
+    token,
+  });
 });
 
-module.exports = {usersRoutes};
+module.exports = { usersRoutes };

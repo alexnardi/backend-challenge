@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:../database.sqlite"
+}
+
+model channels {
+  id         Int       @id @default(autoincrement())
+  user_id    Int       @unique
+  game_name  String
+  title      String
+  language   String
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+  owner      users     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model users {
+  id            Int       @id @default(autoincrement())
+  experience    Int
+  points        Float
+  queue         Int       @default(10)
+  follow_ticket Int?
+  twitch_id     String    @unique(map: "users_twitch_id_unique")
+  twitch_name   String?
+  view_count    Int?
+  profile_image String?
+  email         String?
+  password      String?
+  created_at    DateTime? @default(now())
+  updated_at    DateTime? @default(now())
+  channel       channels?
+}

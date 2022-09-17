@@ -119,3 +119,24 @@ Enviar o link para [mosggoficial@gmail.com](mailto:mosggoficial@gmail.com) até 
 
 Boa sorte a todos e  
 Bom trabalho!!
+
+----------------------------------------------------------
+
+## resposta do Teste Prático Back-end MOS.gg
+
+### passos criados
+- endpoint /signup
+- endpoint /login
+- integração com a API da Twitch
+- banco de dados disponibilizado salvo
+- endpoint /streamers
+
+### instruções para rodar o app: 
+Passo 1: tenha instalado:
+- docker: https://docs.docker.com/engine/install/
+- docker-compose: https://docs.docker.com/compose/install/ 
+			rode o comando:
+3- $docker-compose up 
+			ou
+1- $docker run -p 3000:3000 -d 
+2- $docker build -t alexnardi/backend-challenge.
