@@ -138,21 +138,31 @@ Bom trabalho!!
 Passo 1: 
 
 - tenha instalado:
-docker: https://docs.docker.com/engine/install/
-docker-compose: https://docs.docker.com/compose/install/ 
+[docker](https//docs.docker.com/engine/install/)
+e
+[docker-compose](https://docs.docker.com/compose/install/)
 		
 Passo 2: 
 
 - baixar o arquivo backendchallenge.tar
 - rode o comando(substituir o caminho do arquivo):
 
+```
 $ docker load < /tmp/backendchallenge.tar
+```
 
-		ou rode o comando:
+-ou rode o comando:
 
-$docker-compose up 
+```
+$docker-compose up
+```
 
 -caso não dê certo, rode o comando:
 
-$docker run -p 3000:3000 -d 
+```
+$docker run -p 3000:3000 -d
+```
+
+```
 $docker build -t alexnardi/backend-challenge.
+```
